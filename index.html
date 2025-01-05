@@ -1,1 +1,90 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotating Wheel</title>
+    <style>
+        .wheel-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #f7cac9, #92a8d1);
+        }
+        .wheel {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            border: 10px solid transparent;
+            border-image: linear-gradient(45deg, red, yellow, green, blue) 1;
+            border-image-slice: 1;
+        }
+        .wheel-segment {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            transform-origin: 50% 50%;
+            clip-path: polygon(50% 50%, 100% 50%, 100% 0);
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-image: linear-gradient(45deg, red, yellow, green, blue) 1;
+            border-image-slice: 1;
+        }
+        .segment-1 {
+            background-color: red;
+            transform: rotate(0deg);
+        }
+        .segment-2 {
+            background-color: blue;
+            transform: rotate(90deg);
+        }
+        .segment-3 {
+            background-color: yellow;
+            transform: rotate(180deg);
+        }
+        .segment-4 {
+            background-color: green;
+            transform: rotate(270deg);
+        }
+        .wheel:hover {
+            animation: rotate 2s linear infinite;
+        }
+        @keyframes rotate {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        .center-circle {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background-color: white;
+            border: 5px solid transparent;
+            border-image: linear-gradient(45deg, red, yellow, green, blue) 1;
+            border-image-slice: 1;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="wheel-container">
+        <div class="wheel">
+            <div class="wheel-segment segment-1"></div>
+            <div class="wheel-segment segment-2"></div>
+            <div class="wheel-segment segment-3"></div>
+            <div class="wheel-segment segment-4"></div>
+            <div class="center-circle"></div>
+        </div>
+    </div>
+</body>
+</html>
